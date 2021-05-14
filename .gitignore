@@ -1,0 +1,4 @@
+algorithm/checkpoints
+.idea
+*__pycache__
+backend/images
