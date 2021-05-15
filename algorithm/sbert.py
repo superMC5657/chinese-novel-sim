@@ -5,9 +5,10 @@
 
 from sentence_transformers import SentenceTransformer, util
 
-sBert = SentenceTransformer('algorithm/checkpoints/distiluse-base-multilingual-cased-v1')
+
 
 if __name__ == '__main__':
+    sBert = SentenceTransformer('algorithm/checkpoints/distiluse-base-multilingual-cased-v1')
     query_embedding = sBert.encode('你好可爱.')
     passage_embedding = sBert.encode('You are so cute.')
 

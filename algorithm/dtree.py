@@ -4,16 +4,14 @@
 # !@fileName: dtree.py
 
 
+import json
+
 import cv2
-from ddparser import DDParser
-from tqdm import tqdm
+import datasketch
+import hanlp
+import treesimi as ts
 
 from algorithm.utils import visualize
-import hanlp
-import conllu
-import treesimi as ts
-import datasketch
-import json
 
 
 def dlp(ddp, text, image_path):

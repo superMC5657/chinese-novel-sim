@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本相似度计算</title>
+</head>
+<body>
+<style type="text/css">
+    a {
+        line-height: 40pt;
+        text-decoration: none;
+        color: black;
+        font-size: 12pt;
+        background-color: #87ceeb;
+        margin-top: 8px;
+        text-align: center;
+
+    }
+
+    a:hover {
+        font-size: 16pt;
+        font-weight: 1000;
+        text-shadow: 0 3px 3px #5c5c5c;
+        opacity: .8;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+
+
+    }
+
+    form {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        border-radius: 5px;
+
+        margin-left: 40px;
+        box-sizing: border-box;
+        padding: 24px;
+        margin-top: 40px;
+        width: 400px;
+        border: 1px solid #5c5c5c;
+        box-shadow: 3px 3px 5px #5c5c5c;
+
+    }
+
+    form > input {
+        margin-top: 24px;
+        height: 32px;
+    }
+
+
+    .form-group {
+
+        width: 480px;
+        display: inline-block;
+    }
+
+
+    html, body {
+        font-family: 'Roboto', 'Helvetica', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .textarea-inherit {
+        width: 360px;
+        white-space: pre-wrap;
+        height: 100px;
+        overflow: auto;
+        word-break: break-all;
+    / / 解决兼容问题
+    }
+
+    .custom-img {
+        height: 500px;
+        width: 1000px;
+    }
+
+</style>
+<div>
+    <h1 align="center">文本相似度与句法依存可视化系统</h1>
+</div>
+
+<div display="flex">
+    <div class="container">
+        <div>
+            <form action="/get_text" method="POST" enctype="multipart/form-data">
+                <label for="source_text"><strong>请输入源文本：</strong></label>
+
+                <textarea class="textarea-inherit" id="source_text" name="source_text" rows="5"></textarea>
+
+                <label for="target_text"><strong>请输入目标文本：</strong></label>
+
+                <textarea class="textarea-inherit" id="target_text" name="target_text" rows="5"></textarea>
+
+                <button type="submit" class="btn btn-primary mb-2">文本相似度计算</button>
+                {% if res_json %}
+                <label for="similar_result"><strong>相似度结果：</strong></label>
+                <textarea class="textarea-inherit" id="similar_result" name="similar_result"
+                          rows="5">{{res_json.sim}}</textarea>
+                {% endif %}
+            </form>
+            {% if res_json %}
+            <div>
+                <div class="title"><strong>源文本</strong></div>
+                <img src="{{ res_json.s_t_image}}" alt="无法显示" class="custom-img">
+                <div class="title"><strong>目标文本</strong></div>
+                <img src="{{ res_json.t_t_image}}" alt="无法显示" class="custom-img">
+            </div>
+            {% endif %}
+        </div>
+
+
+    </div>
+
+</div>
+</div>
+</body>
+</html>
