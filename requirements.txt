@@ -1,0 +1,13 @@
+jieba==0.42.1
+treesimi==0.1.3
+scipy==1.5.2
+numpy==1.19.1
+datasketch==1.5.3
+sentence_transformers==1.1.1
+ddparser==0.1.2
+Flask==1.1.2
+hanlp==2.1.0a38
+opencv_python_headless==4.4.0.46
+matplotlib==3.3.4
+joblib==0.17.0
+scikit_learn==0.24.2

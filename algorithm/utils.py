@@ -14,7 +14,7 @@ from matplotlib import font_manager
 font = font_manager.FontProperties(
     fname='data/SourceHanSansCN-Regular.otf')
 
-
+# 可视化依存树
 def visualize(word, head, deprel, postag):
     """
     Visualize the dependency.
@@ -109,7 +109,7 @@ def visualize(word, head, deprel, postag):
                         (3,))[:, :, ::-1]
     return data
 
-
+# 读取小说
 def read_novel(txt_dir_path, stopwords):
     corpus = []
     txt_paths = [os.path.join(txt_dir_path, _) for _ in os.listdir(txt_dir_path)]
@@ -121,7 +121,7 @@ def read_novel(txt_dir_path, stopwords):
                     corpus.append(cor)
     return corpus
 
-
+# 文本行处理
 def line_process(line, stopwords):
     line = line.strip()
     line = re.sub(r'%[0-9a-zA-Z][0-9a-zA-Z]', '', line)
@@ -135,12 +135,12 @@ def line_process(line, stopwords):
     cor = " ".join(cor)
     return cor
 
-
+# 读取停止词
 def read_stopwords(txt_path):
     stopwords = [line.strip() for line in open(txt_path, encoding='UTF-8').readlines()]
     return stopwords
 
-
+# 创建文件夹
 def mkdirs(dir_path):
     if not os.path.exists(dir_path):
         os.mkdir(dir_path)

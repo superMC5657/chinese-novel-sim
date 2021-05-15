@@ -2,18 +2,15 @@
 # !@time: 2021/5/15 上午12:01
 # !@author: superMC @email: 18758266469@163.com
 # !@fileName: web_flask.py
-import json
 import os
-import time
 
 import cv2
 import hanlp
 import numpy as np
 from ddparser import DDParser
-from flask import Flask, render_template, Response, request, send_from_directory, make_response
+from flask import Flask, render_template, request
 from scipy.linalg import norm
 from sentence_transformers import SentenceTransformer, util
-from werkzeug.utils import secure_filename
 
 from algorithm.dtree import tree_sim
 from algorithm.idf import IDF

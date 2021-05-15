@@ -14,6 +14,7 @@ import treesimi as ts
 from algorithm.utils import visualize
 
 
+# 百度ddparser 依存树解析工具
 def dlp(ddp, text, image_path):
     results = ddp.parse(text)
     result = results[0]
@@ -22,6 +23,7 @@ def dlp(ddp, text, image_path):
     cv2.imwrite(image_path, data)
 
 
+# 计算依存树相似度
 def tree_sim(deprels):
     cfg = {
         'use_trunc_leaves': True,
@@ -69,6 +71,7 @@ if __name__ == '__main__':
     s1 = '莲步微移，名为萧薰儿的少女行到魔石碑之前，小手伸出，镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕，然后轻触着石碑'
     s2 = '这名紫裙少女，论起美貌与气质来，比先前的萧媚，无疑还要更胜上几分，也难怪在场的众人都是这般动作。'
 
+    # hanlp 依存树解析工具
     HanLP = hanlp.load(hanlp.pretrained.mtl.CLOSE_TOK_POS_NER_SRL_DEP_SDP_CON_ELECTRA_SMALL_ZH)  # 世界最大中文语料库
     doc = HanLP([s1])
     doc.pretty_print()

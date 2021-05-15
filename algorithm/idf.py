@@ -12,6 +12,8 @@ import numpy as np
 from scipy.linalg import norm
 from algorithm.utils import read_novel, read_stopwords, line_process
 
+
+# IDF模型，保存模型之后可以重复利用
 class IDF:
     def __init__(self):
         self.vectorizer = CountVectorizer()
@@ -51,7 +53,7 @@ class IDF:
 
 
 
-
+# 训练
 def trainer():
     datasets_path = 'data/datasets'
     corpus = read_novel(datasets_path, stopwords)
@@ -59,7 +61,7 @@ def trainer():
     idf.train(corpus)
     idf.save(checkpoint_path)
 
-
+# 推理
 def inference(s1, s2):
     corpus = []
     cor = line_process(s1, stopwords)
@@ -80,7 +82,7 @@ if __name__ == '__main__':
     checkpoint_path = 'algorithm/checkpoints/'
     stopwords = read_stopwords(stopwords_path)
     # trainer()
-    s1 = '莲步微移，名为萧薰儿的少女行到魔石碑之前，小手伸出，镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕，然后轻触着石碑'
+    s1 = '莲步微移，名为萧薰儿的少女行到魔石碑之前，小手伸出，镶着黑金丝的紫袖滑落而下，露出一截雪白娇嫩的皓腕，然后轻触着石碑。'
     s2 = '这名紫裙少女，论起美貌与气质来，比先前的萧媚，无疑还要更胜上几分，也难怪在场的众人都是这般动作。'
     sim = inference(s1, s2)
     print(sim)

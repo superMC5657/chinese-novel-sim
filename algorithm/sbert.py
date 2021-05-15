@@ -8,6 +8,7 @@ from sentence_transformers import SentenceTransformer, util
 
 
 if __name__ == '__main__':
+    # Sota 深度学习语义模型
     sBert = SentenceTransformer('algorithm/checkpoints/distiluse-base-multilingual-cased-v1')
     query_embedding = sBert.encode('你好可爱.')
     passage_embedding = sBert.encode('You are so cute.')
