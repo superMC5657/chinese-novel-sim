@@ -11,7 +11,7 @@ from ddparser import DDParser
 from flask import Flask, render_template, request
 from scipy.linalg import norm
 from sentence_transformers import SentenceTransformer, util
-
+import time
 from algorithm.dtree import tree_sim
 from algorithm.idf import IDF
 from algorithm.utils import line_process, read_stopwords, visualize
@@ -56,10 +56,11 @@ def uploader():
         results = ddp.parse([s_t, t_t])
         result = results[0]
         img = visualize(result['word'], result['head'], result['deprel'], result['postag'])
-        s_t_image = os.path.join(image_dir, 's_t.png')
-        t_t_image = os.path.join(image_dir, 't_t.png')
-        s_image = os.path.join(static, 's_t.png')
-        t_image = os.path.join(static, 't_t.png')
+        now = str(time.time())
+        s_t_image = os.path.join(image_dir, f's_t{now}.png')
+        t_t_image = os.path.join(image_dir, f't_t{now}.png')
+        s_image = os.path.join(static, f's_t{now}.png')
+        t_image = os.path.join(static, f't_t{now}.png')
         cv2.imwrite(s_t_image, img)
         result = results[1]
         img = visualize(result['word'], result['head'], result['deprel'], result['postag'])
